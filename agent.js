@@ -2,6 +2,7 @@ const createServer =  require('./src/create-agent-server');
 const getIp = require('./src/get-ip');
 const connectFirefox = require('./connect-firefox');
 const connectChromium = require('./connect-chromium');
+const connectWebkit = require('./connect-webkit');
 
 const host = '0.0.0.0';
 const port = process.argv[2] | 8001;
@@ -30,8 +31,10 @@ const start = async () => {
     console.log(`Connecting to ${driver} on ${url}`);
     if(driver === 'chromium') {
         connectChromium(url);
-    } else {
+    } else if(driver === 'firefox') {
         connectFirefox(url);
+    } else {
+        connectWebkit(url);
     }
 }
 
