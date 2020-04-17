@@ -9,8 +9,6 @@ const port = process.argv[2] | 8001;
 const driver = process.argv[3] ? process.argv[3] : 'chromium';
 const mode = process.argv[4] ? process.argv[4] : 'localhost';
 
-var socket = null;
-
 const startBrowser = async () => {
     var ip = await getIp();
     var browser = await require(`./src/${driver}/launcher`)();
@@ -19,8 +17,7 @@ const startBrowser = async () => {
     return setup;
 };
 
-const reconnectAll = async () => {
-    socket.close();
+const reconnectAll = async () => {    
     await start();
 }
 
