@@ -7,6 +7,7 @@ const connectFirefox = async (url) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://github.com/microsoft/playwright');
+    await page.screenshot({path: 'firefox.png'});
     await browser.close();  
 }
 

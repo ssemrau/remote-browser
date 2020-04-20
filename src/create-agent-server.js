@@ -5,7 +5,8 @@ async function createServer (wsEndPoint, host, port, onClose, onError) {
         .createServer({
             target:       wsEndPoint,
             ws:           true,
-            localAddress: host
+            localAddress: host,
+            ignorePath: true
         }).listen(port);
     
     proxy.on('open', function (proxySocket) {
